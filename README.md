@@ -1,4 +1,4 @@
 SOM_code
 ========
 
-Algorithms for generating Self-Organizing Maps
+Algorithms for generating and testing Self-Organizing Maps
