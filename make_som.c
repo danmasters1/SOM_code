@@ -450,11 +450,14 @@ int main(int argc, char *argv[]){
     // Update the occupation of the winning cell
     finalSOM[idx_bmu].cell_occupation += 1;
     finalSOM[idx_bmu].cell_redshift += redshift_good[i];
+    finalSOM[idx_bmu].cell_dispersion += minsep;
   } 
 
   for(i=0;i<Ncells;i++){
     if(finalSOM[i].cell_occupation != 0.){
       finalSOM[i].cell_redshift /= finalSOM[i].cell_occupation;
+      finalSOM[i].cell_dispersion /= finalSOM[i].cell_occupation;
+      finalSOM[i].cell_dispersion = sqrt(finalSOM[i].cell_dispersion);
     }
   }
 
@@ -562,6 +565,7 @@ int main(int argc, char *argv[]){
     exit(1);
   }
 
+  fprintf(f_out,"# Index X Y Weight1 Weight2 Weight3 Weight4 Weight5 Weight6 Weight7 Weight8 Cell_Occupation U_value Cell_Dispersion Cell_Average Redshift\n"); 
   for(i=0;i<Ncells;i++){
     fprintf(f_out,"%d %f %f %f %f %f %f %f %f %f %f %f %f %f %f\n",finalSOM[i].cell_index,finalSOM[i].x,finalSOM[i].y,finalSOM[i],finalSOM[i].cellweights[0],finalSOM[i].cellweights[1],finalSOM[i].cellweights[2],finalSOM[i].cellweights[3],finalSOM[i].cellweights[4],finalSOM[i].cellweights[5],finalSOM[i].cellweights[6],finalSOM[i].cellweights[7], finalSOM[i].cell_occupation, finalSOM[i].U_value, finalSOM[i].cell_dispersion, finalSOM[i].cell_redshift);
   }
