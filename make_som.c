@@ -345,7 +345,7 @@ int main(int argc, char *argv[]){
   int randomIdx, idx_bmu;
   double sep, minsep, a_t, H_t, sigma_t, sigma_t_squared, trainingVector[Ndimensions];
 
-  Niterations = 10000;
+  Niterations = 100000;
   for(iter=0;iter<Niterations;iter++){
     // Select at random from the training data
     // May want to change this to shuffling etc.
